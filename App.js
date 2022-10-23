@@ -1,7 +1,14 @@
 import AppLoading from 'expo-app-loading';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Themes } from './assets/Themes';
+import Header from './components/Header.js';
+import Card from './components/Card.js';
+import Audio from './components/Audio.js';
+import Footer from './components/Footer.js';
+
+
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -12,32 +19,31 @@ export default function App() {
   /* ^Don't mind/edit the code above, it's there to load the font for you! */
   StatusBar.setBarStyle(Themes.light.statusBar);
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
-
-  /* insert your code here */
-
+  
   return (
-    <View style={styles.container}>
-      <Text
-        style={{
-          fontFamily: 'Sydney', // test to see if the font is loaded, feel free to remove this
-        }}>
-        Open up App.js to start working on your app!
-      </Text>
-      <Text
-        style={{
-          fontFamily: 'Sydney-Bold', // test to see if the font is loaded, feel free to remove this
-        }}>
-        ~Good luck~
-      </Text>
-    </View>
+      <View style={styles.container}>
+        <Header/>
+        <View style={styles.main}>
+          <Card/>
+          <Audio/>
+        </View>
+        <Footer/>
+      </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
+    position: 'absolute',
     flex: 1,
+    width: '100%',
+    height: '100%',
+    flexDirection: 'column',
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+    backgroundColor: 'rgba(235,235,235,1)',
   },
+  main: {
+    flexDirection: 'column',
+  }
 });
